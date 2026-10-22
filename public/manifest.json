@@ -1,0 +1,21 @@
+{
+  "name": "European Heritage | Porcelain, Ceramic, Stone & Natural Wood",
+  "short_name": "European Heritage",
+  "description": "Porcelain, ceramic, stone and natural wood for considered homes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#30322e",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

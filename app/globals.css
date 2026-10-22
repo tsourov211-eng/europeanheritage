@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 40 20% 98%;
+  --foreground: 80 5% 20%;
+  --card: 40 20% 98%;
+  --card-foreground: 80 5% 20%;
+  --popover: 40 20% 98%;
+  --popover-foreground: 80 5% 20%;
+  --primary: 80 5% 20%;
+  --primary-foreground: 40 20% 98%;
+  --secondary: 45 9% 94%;
+  --secondary-foreground: 80 5% 20%;
+  --muted: 45 9% 94%;
+  --muted-foreground: 80 4% 44%;
+  --accent: 45 9% 94%;
+  --accent-foreground: 80 5% 20%;
+  --destructive: 0 65% 45%;
+  --destructive-foreground: 40 20% 98%;
+  --border: 40 7% 87%;
+  --input: 40 7% 87%;
+  --ring: 80 5% 20%;
+  --radius: 0.2rem;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground; margin: 0; }
+}
+
+.font-serif { font-family: Georgia, 'Times New Roman', serif; }
+.font-sans { font-family: Arial, Helvetica, sans-serif; }
+.image-tile { aspect-ratio: 1.18 / 1; }
+.hero img { filter: saturate(.78); }
+.hero-full-screen {
+  height: calc(100vh - 101px);
+  height: calc(100dvh - 101px);
+  min-height: 560px;
+}
+@keyframes fade-in {
+
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 650ms ease both; }
+
+/* ── Scroll-reveal: cards start hidden, slide in from left ── */
+.reveal-card {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-card.reveal-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-card { opacity: 1; transform: none; transition: none; }
+}
+.press-marquee { overflow: hidden; }
+.press-track { display: flex; width: max-content; animation: press-left 34s linear infinite; }
+.press-track img { display: block; width: min(72vw, 760px); height: clamp(140px, 18vw, 220px); flex: 0 0 min(72vw, 760px); object-fit: contain; }
+.featured-press:hover .press-track { animation-play-state: paused; }
+@keyframes press-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .press-track { animation: none; }
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+.social-mark {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+.social-mark:hover { transform: translateY(-3px); opacity: 0.72; }
+.social-mark-facebook { color: #4267a9; }
+.social-mark-instagram { color: #ec3d54; font-size: 29px; font-weight: 400; }
+.social-mark-pinterest { color: #d52e3f; font-family: Georgia, serif; font-size: 25px; }
+.social-mark-houzz { color: #8ebc45; font-size: 21px; }
+.social-mark:focus-visible { outline: 1px solid #5c6470; outline-offset: 4px; }
+.footer-link { transition: color 180ms ease, opacity 180ms ease; }
+.footer-link:hover { color: white; opacity: 0.72; }
+.footer-social { display: inline-flex; width: 18px; height: 18px; align-items: center; justify-content: center; color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; line-height: 1; transition: transform 180ms ease, opacity 180ms ease; }
+.footer-social:hover { transform: translateY(-2px); opacity: 0.68; }
+.footer-social-instagram { font-size: 22px; font-weight: 400; }
+.footer-social-pinterest { font-family: Georgia, serif; font-size: 20px; }
+.footer-social-houzz { font-size: 15px; }
+.footer-social:focus-visible, .footer-link:focus-visible { outline: 1px solid white; outline-offset: 4px; }
+.payment-badge { display: inline-flex; min-width: 46px; height: 32px; align-items: center; justify-content: center; border-radius: 4px; padding: 0 7px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: 700; line-height: 0.8; }
+.payment-amex { background: #147bc1; color: white; }
+.payment-apple { background: #f8f8f8; color: #111; }
+.payment-google { background: white; color: #4e83cf; }
+.payment-mastercard { background: #141414; color: #f04439; letter-spacing: -4px; font-size: 19px; }
+.payment-shop { background: #673de6; color: white; }
+.payment-visa { background: #2449ca; color: white; font-size: 14px; }
+.frosted-nav {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid rgba(48, 50, 46, 0.1);
+  box-shadow: 0 3px 10px rgba(48, 50, 46, 0.04);
+  backdrop-filter: blur(18px) saturate(105%);
+  -webkit-backdrop-filter: blur(18px) saturate(105%);
+}
+.nav-link, .nav-action { transition: color 180ms ease, opacity 180ms ease, transform 180ms ease; }
+.nav-link:hover, .nav-action:hover { color: #7d624c; opacity: 0.78; }
+.nav-link:focus-visible, .nav-action:focus-visible { outline: 1px solid #7d624c; outline-offset: 5px; }
+
